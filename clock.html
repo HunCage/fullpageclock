@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			href="../../favicon.ico"
+			type="image/x-icon"
+		/>
+		<style>
+			@font-face {
+				font-family: cyberverse;
+				src: url(fonts/Cyberverse.otf);
+			}
+
+			* {
+				font-family: cyberverse;
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+                display: flex;
+				background-color: rgb(27, 26, 26);
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+                justify-content: center;
+                align-items: center;
+			}
+
+			.clock {
+				display: flex;
+				text-align: center;
+				font-size: 64px;
+				color: rgb(20, 207, 240);
+			}
+		</style>
+		<title>Clock</title>
+	</head>
+
+	<body onload="startTime()">
+		<section>
+			<p class="clock"></p>
+		</section>
+
+		<script>
+			"use strict";
+			const clock = document.querySelector(".clock");
+
+			function clockNow() {
+				const dateNow = new Date();
+				const hours = dateNow.getHours();
+				const minutes = dateNow.getMinutes();
+				const seconds = dateNow.getSeconds();
+				const time = `${hours}:${
+					minutes < 10 ? "0" + minutes : minutes
+				}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+				clock.innerHTML = time;
+
+				// console.log(
+				//     `${hours}:${minutes < 10 ? "0" + minutes : minutes}:${
+				//     seconds < 10 ? "0" + seconds : seconds
+				// }`);
+			}
+
+			function startTime() {
+				setInterval("clockNow()", 1000);
+			}
+		</script>
+	</body>
+</html>
